@@ -41,7 +41,12 @@
 
         if (segundos === 0) {
             clearInterval(intervalo);
-            window.location.href = "/game";
+            const myDiv = document.querySelector(".mainDiv");
+            myDiv.classList.add("animate__animated", "animate__zoomOut");
+
+            setTimeout(function () {
+                window.location.href = "/game";
+            }, 900);
         }
     }, 1000);
 </script>
