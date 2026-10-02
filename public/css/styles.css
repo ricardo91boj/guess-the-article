@@ -1,0 +1,150 @@
+/* configuración general  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --color-background: #1A1A1A;
+    --color-accent: #DD0000;
+    --color-highlight: #FFCE00;
+    --color-text: #FFFFFF;
+    --font-title: "Alfa Slab One",
+        serif;
+    --font-body: "Gentium Plus",
+        serif;
+
+    background: #000000;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 30%, rgba(27, 27, 33, 1) 100%);
+    font-family: var(--font-body);
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: clamp(48px, 8vw, 80px);
+    text-align: center;
+}
+
+h2 {
+    font-size: clamp(24px, 8vw, 56px);
+    text-align: center;
+}
+
+h3 {
+    font-size: clamp(16px, 8vw, 48px);
+    text-align: center;
+}
+
+hr {
+    width: 100%;
+    margin: 24px 0px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 40px);
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.08);
+        border-color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 2px;
+    }
+
+    &:active {
+        transform: scale(0.92);
+        opacity: 0.7;
+    }
+}
+
+/* main windows and general css */
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: clamp(8px, 2vw, 15px);
+    padding: clamp(20px, 4vw, 40px);
+    width: clamp(300px, 80%, 1200px);
+    height: 700px;
+    gap: 16%;
+}
+
+.withoutGap {
+    gap: 0%;
+}
+
+/* intro.ejs */
+.formDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(10px, 3vw, 30px);
+}
+
+@media (max-width: 600px) {
+    .formDiv {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+.timer>h1 {
+    margin-bottom: 0px;
+}
+
+/* game.ejs */
+footer {
+    margin-top: 1%;
+}
+
+#maskulin {
+    border-color: aqua;
+}
+
+#femminin {
+    border-color: palevioletred;
+}
+
+#neutral {
+    border-color: greenyellow;
+}
+
+.correctAnswer{
+    border-color: #4CAF50;
+    background-color: #4CAF50;
+}
+
+.wrongAnswer{
+    background-color: red;
+}
+
+/* animations  */
+
+.animate__fadeIn{
+    --animate-duration: 3s;
+}
+
+.animate__flipOutX{
+    --animate-duration: 1s;
+}

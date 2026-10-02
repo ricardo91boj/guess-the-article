@@ -1,0 +1,62 @@
+<div class="mainDiv animate__animated animate__fadeIn">
+    <!-- Primer div: título -->
+    <div>
+        <h1>Escoge el nivel:</h1>
+    </div>
+
+    <!-- Segundo div: contenedor -->
+    <form class="formDiv" action="/instructions" method="POST">
+
+        <!-- load vocabulary A1 -->
+        <div class="card">
+            <button type="button" name="list" value="A1">
+                <h2>A1</h2>
+            </button>
+        </div>
+
+        <!-- load vocabulary A2 -->
+        <div class="card">
+            <button type="button" name="list" value="A2">
+                <h2>A2</h2>
+            </button>
+        </div>
+
+        <!-- load vocabbulary B1 -->
+        <div class="card">
+            <button type="button" name="list" value="B1">
+                <h2>B1</h2>
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Al final de tu game.ejs -->
+
+<script>
+    const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+
+                // animation on button 
+                button.classList.add("animate__animated", "animate__flipOutX");
+
+                // animation on div 
+                setTimeout(function () {
+                    const myDiv = document.querySelector(".mainDiv");
+                    myDiv.classList.add("animate__animated", "animate__zoomOut");
+                }, 900);
+
+                // Submit form after animation
+                setTimeout(function () {
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "list";
+                    input.value = button.value;
+                    button.closest("form").appendChild(input);
+
+                    button.closest("form").submit();
+                }, 2000);
+            });
+        });
+</script>

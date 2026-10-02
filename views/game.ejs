@@ -1,0 +1,77 @@
+<!-- Contenedor principal -->
+<div class="mainDiv animate__animated animate__fadeIn">
+
+    <!-- Show the word -->
+    <div class="word">
+        <h1>
+            <%= word %>
+        </h1>
+    </div>
+
+    <!-- Articles options -->
+    <form class="formDiv" action="/checkAnswer" method="POST">
+
+        <!-- first article der -->
+
+        <div class="articleDiv">
+            <button type="submit" name="answer" value="der" id="maskulin" <% if (userAnswer==="der" ) { if
+                (userAnswer===correctAnswer) { %>
+                class="correctAnswer"
+                <% } else { %>
+                    class="wrongAnswer"
+                    <% } } %>
+                        >
+                        <h2>Der</h2>
+            </button>
+        </div>
+
+
+        <!-- second article die -->
+
+        <div class="articleDiv">
+            <button type="submit" name="answer" value="die" id="femminin" <% if (userAnswer==="die" ) { if
+                (userAnswer===correctAnswer) { %>
+                class="correctAnswer"
+                <% } else { %>
+                    class="wrongAnswer"
+                    <% } } %>
+                        >
+                        <h2>Die</h2>
+            </button>
+        </div>
+
+
+
+        <!-- third article das -->
+
+        <div class="articleDiv">
+            <button type="submit" name="answer" value="das" id="neutral" <% if (userAnswer==="das" ) { if
+                (userAnswer===correctAnswer) { %>
+                class="correctAnswer"
+                <% } else { %>
+                    class="wrongAnswer"
+                    <% } } %>
+                        >
+                        <h2>Das</h2>
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- botón para regresar al inicio  -->
+<footer>
+    <form action="/" method="GET">
+        <button type="submit">Regresar al inicio</button>
+    </form>
+</footer>
+
+<!-- wait time until load the next word -->
+<% if (userAnswer) { %>
+    <script>
+        setTimeout(function () {
+            window.location.href = "/game";
+        }, 2000);
+    </script>
+    <% } %>

@@ -1,0 +1,47 @@
+<div class="mainDiv withoutGap animate__animated animate__fadeIn">
+
+    <!-- instructions -->
+    <div>
+        <h3>Escoge el género de la palabra basandote en su estructura.</h3>
+    </div>
+
+    <hr>
+    <div>
+        <h3>
+            <%= vocabulary %>
+        </h3>
+    </div>
+    <hr>
+
+    <div>
+        <h2>¿Listos?</h2>
+    </div>
+
+    <div class="timer">
+        <h1 id="countdown">5</h1>
+    </div>
+
+</div>
+
+<script>
+    const countdown = document.getElementById("countdown");
+    let segundos = 5;
+
+    const intervalo = setInterval(function () {
+        segundos--;
+
+        // set the timer 
+        countdown.innerHTML = segundos;
+
+        // set the animation for the timer
+        countdown.style.setProperty("--animate-duration", "0.3s");
+        countdown.classList.remove("animate__animated", "animate__fadeInRight");
+        void countdown.offsetWidth;
+        countdown.classList.add("animate__animated", "animate__fadeInRight");
+
+        if (segundos === 0) {
+            clearInterval(intervalo);
+            window.location.href = "/game";
+        }
+    }, 1000);
+</script>

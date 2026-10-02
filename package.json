@@ -1,0 +1,18 @@
+{
+  "name": "api-proyect",
+  "version": "1.0.0",
+  "description": "An Api Proyect",
+  "author": "Ricardo Martinez",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "axios": "^1.20.0",
+    "body-parser": "^2.3.0",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}
