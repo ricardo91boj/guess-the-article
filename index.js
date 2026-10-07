@@ -44,42 +44,11 @@ app.post("/instructions", async (req, res) => {
 
 // load game - get random word
 app.get("/game", async (req, res) => {
-    // get a random index
-    let randomIndex = Math.floor(Math.random() * vocabulary.length);
 
-    // whileloop until finding a substantiv 
-    let itsSubstantiv = false;
-    while (itsSubstantiv == false) {
-        if (vocabulary[randomIndex].pos === "Substantiv") {
-            userAnswer = null;
-            // setting correct article
-            correctAnswer = vocabulary[randomIndex].articles[0];
-            // setting random word 
-            word = vocabulary[randomIndex].sch[0].lemma;
-            itsSubstantiv = true;
-        } else {
-            // repet loop until getting a random index 
-            randomIndex = Math.floor(Math.random() * vocabulary.length);
-        }
-    }
-    
     // load game window
     res.render("index.ejs", {
         page: "game",
-        word: word,
-        correctAnswer: correctAnswer,
-        userAnswer: userAnswer
-    })
-});
-
-// check answer 
-app.post("/checkAnswer", async (req, res) => {
-    userAnswer = req.body.answer;
-    res.render("index.ejs", {
-        page: "game",
-        word: word,
-        correctAnswer: correctAnswer,
-        userAnswer: userAnswer
+        wordList: vocabulary
     })
 });
 
