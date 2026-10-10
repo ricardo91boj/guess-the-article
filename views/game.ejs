@@ -3,8 +3,7 @@
 
     <!-- Show the word -->
     <div class="word">
-        <h1 id="word">
-        </h1>
+        <h1 id="word"></h1>
     </div>
 
     <!-- Articles options -->
@@ -45,34 +44,48 @@
 <!-- check corret answer  -->
 <script>
 
+    let userAnswer = null;
+    let correctAnswer = null;
+    let word = null;
+    
+    // cast the h1 element 
+    const wordElement = document.getElementById("word");
+
+    // cast the words array 
     const wordList = JSON.parse('<%- JSON.stringify(wordList) %>');
-    console.log(wordList); // verifica en Chrome que llegó bien
+
+    // get a random index
+    let randomIndex = Math.floor(Math.random() * wordList.length);
+
+    // whileloop until finding a substantiv
+    let itsSubstantiv = false;
+    while (itsSubstantiv == false) {
+        if (wordList[randomIndex].pos === "Substantiv") {
+            userAnswer = null;
+            // setting correct article
+            correctAnswer = wordList[randomIndex].articles[0];
+            // setting random word
+            word = wordList[randomIndex].sch[0].lemma;
+            // set the h1 to the random word 
+            wordElement.innerHTML = word;
+            
+            itsSubstantiv = true;
+        } else {
+            // repet loop until getting a random index
+            randomIndex = Math.floor(Math.random() * wordList.length);
+        }
+    }
 
     const buttons = document.querySelectorAll("button");
     buttons.forEach(function (button) {
         button.addEventListener("click", function () {
-            console.log(this.value);
+            userAnswer = this.value;
+            
+            if (userAnswer === correctAnswer){
+                console.log("Its correct!");
+            } else {
+                console.log("Its wrong!");
+            }
         });
     });
 </script>
-
-
-
-        <!-- // // get a random index
-    // let randomIndex = Math.floor(Math.random() * vocabulary.length);
-    
-    // // whileloop until finding a substantiv
-    // let itsSubstantiv = false;
-    // while (itsSubstantiv == false) {
-    // if (vocabulary[randomIndex].pos === "Substantiv") {
-    // userAnswer = null;
-    // // setting correct article
-    // correctAnswer = vocabulary[randomIndex].articles[0];
-    // // setting random word
-    // word = vocabulary[randomIndex].sch[0].lemma;
-    // itsSubstantiv = true;
-    // } else {
-    // // repet loop until getting a random index
-    // randomIndex = Math.floor(Math.random() * vocabulary.length);
-    // }
-    // } -->
