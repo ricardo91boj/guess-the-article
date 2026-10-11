@@ -148,3 +148,11 @@ footer {
 .animate__flipOutX{
     --animate-duration: 1s;
 }
+
+.animate__bounce{
+    --animate-duration: 1s;
+}
+
+.animate__headShake{
+    --animate-duration: 1s;
+}

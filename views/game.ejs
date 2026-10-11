@@ -54,38 +54,54 @@
     // cast the words array 
     const wordList = JSON.parse('<%- JSON.stringify(wordList) %>');
 
-    // get a random index
-    let randomIndex = Math.floor(Math.random() * wordList.length);
+    function getRandomWord() {
+         // get a random index
+        let randomIndex = Math.floor(Math.random() * wordList.length);
 
-    // whileloop until finding a substantiv
-    let itsSubstantiv = false;
-    while (itsSubstantiv == false) {
-        if (wordList[randomIndex].pos === "Substantiv") {
-            userAnswer = null;
-            // setting correct article
-            correctAnswer = wordList[randomIndex].articles[0];
-            // setting random word
-            word = wordList[randomIndex].sch[0].lemma;
-            // set the h1 to the random word 
-            wordElement.innerHTML = word;
-            
-            itsSubstantiv = true;
-        } else {
-            // repet loop until getting a random index
-            randomIndex = Math.floor(Math.random() * wordList.length);
+        // whileloop until finding a substantiv
+        let itsSubstantiv = false;
+        while (itsSubstantiv == false) {
+            if (wordList[randomIndex].pos === "Substantiv") {
+                userAnswer = null;
+                // setting correct article
+                correctAnswer = wordList[randomIndex].articles[0];
+                // setting random word
+                word = wordList[randomIndex].sch[0].lemma;
+                // set the h1 to the random word 
+                wordElement.innerHTML = word;
+
+                itsSubstantiv = true;
+            } else {
+                // repet loop until getting a random index
+                randomIndex = Math.floor(Math.random() * wordList.length);
+            }
         }
     }
 
+    // check answer 
+
+    // call all buttons 
     const buttons = document.querySelectorAll("button");
     buttons.forEach(function (button) {
         button.addEventListener("click", function () {
             userAnswer = this.value;
             
+            // if correct answer 
             if (userAnswer === correctAnswer){
-                console.log("Its correct!");
+                wordElement.classList.add("animate__animated", "animate__bounce");
+                button.classList.add("correctAnswer");
+
+                // get a new word 
+                setTimeout(function () {
+                    
+                }, 1000);
+
+            // wrong answer 
             } else {
-                console.log("Its wrong!");
+                wordElement.classList.add("animate__animated", "animate__headShake");
+                button.classList.add("wrongAnswer");
             }
+
         });
     });
 </script>
