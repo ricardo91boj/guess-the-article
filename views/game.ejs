@@ -78,6 +78,9 @@
         }
     }
 
+    // get a ranndom word 
+    getRandomWord();
+
     // check answer 
 
     // call all buttons 
@@ -93,13 +96,23 @@
 
                 // get a new word 
                 setTimeout(function () {
-                    
+                    wordElement.classList.add("animate__animated", "animate__zoomOut");
+                    setTimeout(function () {
+                        button.classList.remove("correctAnswer");
+                    }, 500); 
                 }, 1000);
 
             // wrong answer 
             } else {
                 wordElement.classList.add("animate__animated", "animate__headShake");
                 button.classList.add("wrongAnswer");
+
+                setTimeout(function () {
+                    wordElement.classList.add("animate__animated", "animate__zoomOut");
+                    setTimeout(function () {
+                        button.classList.remove("correctAnswer");
+                    }, 500); 
+                }, 1000);
             }
 
         });
